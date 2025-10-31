@@ -18,8 +18,8 @@
  * Author:  Emir Dervisevic <emir.dervisevic@etf.unsa.ba>
  *          Miralem Mehic <miralem.mehic@ieee.org>
  */
-#ifndef QKD014_SEND_H
-#define QKD014_SEND_H
+#ifndef QKD_APP_014_H
+#define QKD_APP_014_H
 
 #include "ns3/application.h"
 #include "ns3/event-id.h"
@@ -567,6 +567,9 @@ public:
      * \param state The new application state.
      */
     void SwitchAppState (QKDApp014State state);
+    
+    void StartApplication (void) override;
+    void StopApplication (void) override;
 
 
     /**
@@ -585,7 +588,7 @@ public:
     ns3::TracedCallback<const std::string &, const std::string &> m_stateTransitionTrace; //!< The posible application state transitions.
     TracedCallback<Ptr<const Packet>, std::string > m_mxTrace; //!< A trace for the missed time slots to send data packets.
 
-private:
+protected:
 
 
     /**
@@ -664,13 +667,12 @@ private:
     }
     };
 
-    virtual void StartApplication (void);
-    virtual void StopApplication (void);
+    
 
     /**
      * Schedule the time slot to send the data packets.
      */
-    void ScheduleTx (void);
+    virtual void ScheduleTx (void);
 
     /**
      * \brief Transition through a tree of the application states and trigger actions.
@@ -778,4 +780,4 @@ private:
 
 } // namespace ns3
 
-#endif /* QKD_SINK_H */
+#endif /* QKD_APP_014_H */
