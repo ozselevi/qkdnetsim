@@ -2,4 +2,3 @@ build/
 cmake-cache/
 *.so
 *.gch
-!scratch/

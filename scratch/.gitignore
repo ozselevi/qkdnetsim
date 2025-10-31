@@ -4,3 +4,4 @@
 !subdir/
 !scratch-simulator.cc
 !qkd_channel_test.cc
+!qos/
